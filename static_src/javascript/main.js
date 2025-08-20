@@ -3,7 +3,7 @@ import HeaderSearchPanel from "./components/header-search-panel";
 import MobileMenu from "./components/mobile-menu";
 import SkipLink from './components/skip-link';
 
-import '../sass/main.scss';
+import '../css/main.css';
 
 
 function initComponent(ComponentClass) {

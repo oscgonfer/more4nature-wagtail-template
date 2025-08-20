@@ -82,7 +82,7 @@
         md:hidden 
         invisible 
         transition-all 
-        duration-[640ms] 
+        duration-640 
         ease-out-expo 
         translate-x-full 
         h-screen 
@@ -100,10 +100,10 @@
         <ul class="flex flex-col pt-5">
             {% for link in settings.navigation.NavigationSettings.primary_navigation %}
                 <li class="
-                    border-t-[1px]
+                    border-t
                     border-dashed
                     border-mackerel-200
-                    last-of-type:border-b-[1px]
+                    last-of-type:border-b
                 ">
                     {% if link.value.page %}
                         <a 

@@ -5,30 +5,36 @@ class ThemeToggle {
     
     constructor(node) {
         this.toggleSwitch = node;
-        this.currentTheme = localStorage.getItem('theme');
+        document.documentElement.classList.toggle(
+            "dark",
+            localStorage.theme === "dark" ||
+                (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+        );
+        this.currentTheme = localStorage.theme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
 
         if (this.currentTheme) {
-            document.documentElement.classList.add('theme', this.currentTheme);
+            document.documentElement.dataset.theme = this.currentTheme;
             if (this.currentTheme === 'dark') {
                 this.toggleSwitch.checked = true;
             }
         }
         this.bindEvents()
     }
+    
 
     bindEvents() {
         this.toggleSwitch.addEventListener('change', this.switchTheme, false);
     }
 
     switchTheme(e) {
+        console.log('Switching theme');
+        console.log('Current theme:', localStorage.theme);
         if (e.target.checked) {
-            document.documentElement.classList.add('theme', 'dark');
-            document.documentElement.classList.remove('theme', 'light');
-            localStorage.setItem('theme', 'dark');
+            localStorage.theme = 'dark';
+            document.documentElement.dataset.theme = localStorage.theme;
         } else {
-            document.documentElement.classList.add('theme', 'light');
-            document.documentElement.classList.remove('theme', 'dark');
-            localStorage.setItem('theme', 'light');
+            localStorage.theme = 'light';
+            document.documentElement.dataset.theme = localStorage.theme;
         }
     }
 }

@@ -14,7 +14,7 @@
             md:pr-16
             lg:pr-20
             {% if page.introduction %}
-                md:border-r-[1px]
+                md:border-r
                 md:basis-2/6
                 border-grey-200
             {% endif %}
@@ -52,7 +52,7 @@
                         uppercase
                         font-codepro
                         font-medium
-                        border-[1px] 
+                        border 
                         rounded-[85px]
 
                         {% if matching_topic %}
@@ -101,7 +101,7 @@
                             hover:border-mackerel-300 hover:dark:border-white
                             {% endif %}
 
-                            border-[1px]
+                            border
                             rounded-[85px]
                             ">
                             {{ topic.title }}

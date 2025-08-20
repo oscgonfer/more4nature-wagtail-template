@@ -7,7 +7,7 @@
 {% block content %}
     <div class="site-padding site-container">
         <div class="flex flex-col md:flex-row md:items-center py-20">
-            <h1 class="min-w-fit font-serif4 [word-spacing:-6px] font-bold text-8xl lg:text-10xl border-grey-200 md:pr-16 lg:pr-20 md:border-r-[1px] md:basis-2/6">
+            <h1 class="min-w-fit font-serif4 [word-spacing:-6px] font-bold text-8xl lg:text-10xl border-grey-200 md:pr-16 lg:pr-20 md:border-r md:basis-2/6">
                 {% if search_results %}
                     {% with count=search_results.paginator.count %}
                         {{ count }} result{{ count|pluralize }}
