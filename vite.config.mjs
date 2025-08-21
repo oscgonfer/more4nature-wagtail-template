@@ -6,7 +6,7 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig({
   plugins: [tailwindcss()],
   
-  // Configuración de entrada
+  // Input configuration
   build: {
     outDir: 'static_compiled',
     rollupOptions: {
@@ -17,29 +17,34 @@ export default defineConfig({
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          if (assetInfo.names?.endsWith('.css')) {
+          // Check if names array exists and has at least one element
+          const fileName = assetInfo.names && assetInfo.names.length > 0 
+            ? assetInfo.names[0] 
+            : assetInfo.fileName || '';
+
+          if (fileName.endsWith('.css')) {
             return 'css/[name][extname]'
           }
-          if (assetInfo.names?.match(/\.(ttf|woff|woff2)$/)) {
+          if (/\.(ttf|woff|woff2)$/.test(fileName)) {
             return 'fonts/[name][extname]'
           }
-          if (assetInfo.names?.match(/\.(png|jpe?g|gif|svg|webp)$/)) {
+          if (/\.(png|jpe?g|gif|svg|webp)$/.test(fileName)) {
             return 'images/[name][extname]'
           }
           return '[name][extname]'
         }
       }
     },
-    // Copiar archivos estáticos
+    // Copy static files
     copyPublicDir: false
   },
   
-  // Configuración del servidor de desarrollo
+  // Development server configuration
   server: {
     port: 3000,
     host: '0.0.0.0',
     proxy: {
-      // Proxy para el servidor Django
+      // Proxy for Django server
       '!/static/': {
         target: 'http://localhost:8000',
         changeOrigin: true
@@ -47,12 +52,12 @@ export default defineConfig({
     }
   },
   
-  // Configuración de CSS
+  // CSS configuration
   css: {
     devSourcemap: true
   },
   
-  // Configuración base
+  // Base configuration
   publicDir: 'static_src/images',
   
   resolve: {
