@@ -1,6 +1,6 @@
 # Wagtail News Template
 
-This project template is designed for creating [Wagtail](https://wagtail.org) builds quickly, intended for developers to bootstrap their Wagtail site development using `wagtail start --template=`. The template comes with pre-defined pages, blocks, functionalities, and fixtures to streamline the initial setup process.
+This project template is designed for creating [Wagtail](https://wagtail.org) builds quickly, intended for developers to bootstrap their Wagtail site development using `wagtail start --template=`. The template comes with pre-defined pages, blocks, functionalities, and fixtures to streamline the initial setup process. It leverages Wagtail 7.1+ features and uses Vite for modern, efficient asset management.
 
 ## Getting Started
 
@@ -33,7 +33,7 @@ This project template is designed for creating [Wagtail](https://wagtail.org) bu
    pip install wagtail
    ```
 
-5. **Initialize Project**: Use the `wagtail start` command to create a new project based on the Wagtail Starter Kit template.
+5. **Initialize Project**: Use the `wagtail start` command to create a new project based on the Wagtail News Template.
 
    ```bash
    wagtail start --template=https://github.com/wagtail/news-template/archive/refs/heads/main.zip myproject .
@@ -47,6 +47,12 @@ This project template is designed for creating [Wagtail](https://wagtail.org) bu
 
 All commands from now on should be run from inside the virtual environment.
 
+7. **Install Frontend Dependencies**: The project uses Vite for asset management.
+
+   ```bash
+   npm install
+   ```
+
 8. **Load Dummy Data**: Load in some dummy data to populate the site with some content.
 
    ```bash
@@ -59,12 +65,24 @@ All commands from now on should be run from inside the virtual environment.
    make start
    ```
 
-10. **Access the Site and Admin**: Once the server is running, you can view the site at `localhost:8000` and access the Wagtail admin interface at `localhost:8000/admin`. Log in with the default credentials provided by :
+10. **Access the Site and Admin**: Once the server is running, you can view the site at `localhost:8000` and access the Wagtail admin interface at `localhost:8000/admin`. Log in with the default credentials provided by:
 
     - Username: admin
     - Password: password
 
-### Deploying
+## Features
+
+- Built with **Wagtail 7.1+** and **Django 4.2+**
+- Modern frontend tooling with **Vite** and **Tailwind CSS 4**
+- Accessible theme toggle with light/dark mode support
+- Pre-configured page types: HomePage, ArticlePage, StandardPage, NewsListingPage
+- Streamfield blocks including CaptionedImageBlock, FeaturedArticleBlock and more
+- Related pages component for articles
+- Responsive design with mobile-first approach
+- Ready-to-use fixtures for quick content population
+- Deployment configurations for multiple hosting platforms
+
+## Deploying
 
 Once you have your own copy of the template, you can extend and configure it however you like.
 
@@ -72,7 +90,7 @@ To get it deployed, follow the instructions below for your hosting provider of c
 
 Don't see your preference here? Contributions are always welcome!
 
-#### fly.io
+### fly.io
 
 Before you can deploy to [fly.io](https://fly.io/), you will need an account and the `fly` CLI tool will need to be [installed on your machine](https://fly.io/docs/flyctl/install/).
 
@@ -97,7 +115,7 @@ You can now visit your wagtail site at the URL provided by `fly`. We strongly re
 
 The database and user-uploaded media are stored in the attached volume. To save costs and improve efficiency, the app will automatically stop when not in use, but will automatically restart when the browser loads.
 
-#### Divio Cloud
+### Divio Cloud
 
 [![Deploy to Divio](https://docs.divio.com/deploy-to-divio.svg)](https://control.divio.com/app/new/?template_url=https://github.com/wagtail/news-template/archive/refs/heads/main.zip)
 
@@ -148,9 +166,23 @@ To customize this template, you can either make changes directly or backport cha
 
    3.3. Wrap template code (`.html` files under the templates directory), with a [verbatim tag](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#std-templatetag-verbatim) or similar [templatetag](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#templatetag) to prevent template tags being rendered on `wagtail start` ([see django's rendering warning](https://docs.djangoproject.com/en/5.0/ref/django-admin/#render-warning)).
 
-4. Update compiled static assets using `npm run build:prod`.
+4. Update compiled static assets using `npm run build`
 5. Update fixtures using `make dump-data`
 
 Make sure to test any changes by reviewing them against a newly created project, by following the [Getting Started](#getting-started) instructions again.
+
+## Technology Stack
+
+- **Backend**: Django 4.2+ and Wagtail 7.1+
+- **Frontend**:
+  - Vite for asset bundling and management
+  - Tailwind CSS 4 for styling
+  - JavaScript for interactive components
+- **Features**:
+  - Accessible theme toggle with light/dark mode support
+  - CaptionedImageBlock for images with captions
+  - ImageBlock for Wagtail's built-in image block
+  - Related pages component for article pages
+  - Responsive design throughout the site
 
 Happy coding with Wagtail! If you encounter any issues or have suggestions for improvement, feel free to contribute or open an issue.
