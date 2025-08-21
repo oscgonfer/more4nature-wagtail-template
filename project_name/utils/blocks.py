@@ -36,6 +36,16 @@ class CaptionedImageBlock(blocks.StructBlock):
         help_text="If left blank, the image's global alt text will be used.",
     )
     caption = blocks.CharBlock(required=False)
+    align = blocks.ChoiceBlock(
+        required=False,
+        choices=[
+            ("justify-start", "Left"),
+            ("justify-center", "Center"),
+            ("justify-end", "Right"),
+            ("justify-normal", "Justify")
+        ],
+        default="center",
+    )
 
     class Meta:
         icon = "image"
@@ -205,6 +215,8 @@ class SectionBlocks(blocks.StreamBlock):
         features=["bold", "italic", "link", "ol", "ul", "h3"],
         template="components/streamfield/blocks/paragraph_block.html",
     )
+    image = CaptionedImageBlock()
+    quote = QuoteBlock()
 
 
 class SectionBlock(blocks.StructBlock):
