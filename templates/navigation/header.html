@@ -16,14 +16,14 @@
         
         <div class="flex md:hidden items-center gap-4">
             <button 
-                class="z-30 button-menu-toggle" 
+                class="z-30 button-menu-toggle cursor-pointer" 
                 data-mobile-menu-toggle
                 aria-haspopup="true" 
                 aria-expanded="false" 
                 aria-label="Open navigation menu"
             >
-                <span class="button-menu-toggle__line"></span>
-                <span class="button-menu-toggle__line"></span>
+                <span class="button-menu-toggle line"></span>
+                <span class="button-menu-toggle line"></span>
                 <span class="sr-only">Menu</span>
             </button>
         </div>
@@ -149,8 +149,7 @@
         pt-24
         w-full
         h-full 
-        bg-black
-        bg-opacity-20
+        bg-black/20
         "
     >
         {% include "components/search.html" with variant="search-panel" %}

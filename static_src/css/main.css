@@ -5,8 +5,19 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+@utility tall {
+    @media (min-height: 840px);
+}
+
+@custom-variant tall {
+    &:where(*) {
+        @slot;
+        @apply tall;
+    }
+}
+
 @theme {
-    /* Colores personalizados */
+    /* Custom colors */
     --color-mackerel-100: oklch(0.5693 0 0 / 30.2%);
     --color-mackerel-200: oklch(0.8403 0.0683 212.56);
     --color-mackerel-300: oklch(0.5841 0.0925 215.43);
@@ -21,12 +32,13 @@
     --color-grey-800: oklch(0.3485 0 0);
     --color-grey-900: oklch(0.235 0 0);
 
-    /* Breakpoints personalizados */
+    /* Custom breakpoints */
     --breakpoint-sm: 25.75rem; /* 412px */
     --breakpoint-md: 48rem; /* 768px */
     --breakpoint-lg: 64rem; /* 1024px */
+    /*--breakpoint-tall: 52.5rem;*/ /* 840px */
 
-    /* Tamaños de fuente personalizados */
+    /* Custom font sizes */
     --text-xs: 12px;
     --text-xs--line-height: 1.2;
     --text-sm: 14px;
@@ -56,13 +68,13 @@
     --text-10xl: 100px;
     --text-10xl--line-height: 1.2;
 
-    /* Familias de fuentes personalizadas */
+    /* Custom font families */
     --font-sans3: 'Source Sans 3', sans-serif;
     --font-serif4: 'Source Serif 4', serif;
     --font-codepro: 'Source Code Pro', monospace;
 
-    /* Imagen de fondo personalizada */
-    --background-image-slash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2326899E' viewBox='0 0 11 11'%3E%3Cpath d='M1.78239 10.8013L0.900391 9.99126L4.19439 6.60726L4.78839 7.14726L1.78239 10.8013ZM7.39839 4.33926L6.80439 3.79926L9.81039 0.145264L10.6924 0.955263L7.39839 4.33926Z' /%3E%3C/svg%3E");
+    /* Custom background image */
+    --background-image-slash: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiMyNjg5OUUiIHZpZXdCb3g9IjAgMCAxMSAxMSI+PHBhdGggZD0iTTEuNzgyIDEwLjgwMS45IDkuOTkxbDMuMjk0LTMuMzg0LjU5NC41NHpNNy4zOTggNC4zNGwtLjU5NC0uNTRMOS44MS4xNDVsLjg4Mi44MXoiLz48L3N2Zz4=');
 }
 
 ::after, ::before {
@@ -71,7 +83,7 @@
 
 
 @layer base {
-    
+
     html {
         @apply font-sans3 font-normal not-italic;
         font-optical-sizing: auto;
@@ -86,6 +98,10 @@
     input:focus-visible,
     select:focus-visible {
         @apply outline-mackerel-300 outline-[3px] outline-offset-4;
+    }
+
+    button:not(:disabled), [role="button"]:not(:disabled) {
+        cursor: pointer;
     }
 }
 
@@ -141,7 +157,7 @@
         transition: 0.25s ease-out;
         margin: auto;
 
-        &__line {
+        &.line {
             @apply bg-mackerel-400 dark:bg-white;
             position: absolute;
             display: block;
