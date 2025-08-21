@@ -44,7 +44,7 @@ class CaptionedImageBlock(blocks.StructBlock):
             ("justify-end", "Right"),
             ("justify-normal", "Justify")
         ],
-        default="center",
+        default="justify-center",
     )
 
     class Meta:
