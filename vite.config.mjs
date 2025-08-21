@@ -36,7 +36,7 @@ export default defineConfig({
       }
     },
     // Copy static files
-    copyPublicDir: false
+    copyPublicDir: true
   },
   
   // Development server configuration
@@ -58,7 +58,7 @@ export default defineConfig({
   },
   
   // Base configuration
-  publicDir: 'static_src/images',
+  publicDir: 'static_src/public',
   
   resolve: {
     alias: {
