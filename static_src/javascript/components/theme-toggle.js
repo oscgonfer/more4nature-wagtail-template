@@ -27,8 +27,6 @@ class ThemeToggle {
     }
 
     switchTheme(e) {
-        console.log('Switching theme');
-        console.log('Current theme:', localStorage.theme);
         if (e.target.checked) {
             localStorage.theme = 'dark';
             document.documentElement.dataset.theme = localStorage.theme;
